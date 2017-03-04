@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -18,17 +19,19 @@ public class ServerSocketPlayer implements Runnable {
 	private BufferedReader		input				= null;;
 	private PrintStream			output				= null;
 
-	private String				messageReceived;
-	private String				messageSent;
+	private String				messageReceived, messageSent;
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
 	private int					port;
+	private String				host;
 
-	private ServerSocketPlayer() {
+	public ServerSocketPlayer() {
+		super();
 	}
 
 	public ServerSocketPlayer(int port, String host) {
 		super();
 		this.port = port;
+		this.host = host;
 	}
 
 	public void run() {
@@ -73,9 +76,7 @@ public class ServerSocketPlayer implements Runnable {
 		}
 	}
 
-	/**
-	 * Read message from client and increase counter
-	 */
+	// Read message from client and increase counter
 	private void readMessageFromClient() throws IOException {
 		messageReceived = input.readLine();
 		receivedMessageCounter++;
@@ -84,9 +85,7 @@ public class ServerSocketPlayer implements Runnable {
 				new Object[] { messageReceived, receivedMessageCounter });
 	}
 
-	/**
-	 * Write message to client and increase counter
-	 */
+	// Write message to client and increase counter
 	private void writeMessageToClient() {
 		messageSent = "Hi Client!";
 		output.println(messageSent);
@@ -97,12 +96,11 @@ public class ServerSocketPlayer implements Runnable {
 				new Object[] { messageSent, sentMessageCounter });
 	}
 
-	/**
-	 * initialize server socket
-	 */
+	// initialize server socket
 	private void initializeServerSocket() {
 		try {
-			serverSocket = new ServerSocket(port);
+			InetAddress addr = InetAddress.getByName(host);
+			serverSocket = new ServerSocket(port, 50, addr);
 		} catch (IOException e) {
 			System.out.println("Server socket could not initialized, exception detail:" + e);
 		}

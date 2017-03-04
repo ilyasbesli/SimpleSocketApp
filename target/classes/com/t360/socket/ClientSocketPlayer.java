@@ -19,17 +19,19 @@ public class ClientSocketPlayer implements Runnable {
 	private BufferedReader		input				= null;;
 	private PrintStream			output				= null;
 
-	private String				messageReceived;
-	private String				messageSent;
+	private String				messageReceived, messageSent;
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
 	private int					port;
+	private String				host;
 
-	private ClientSocketPlayer() {
+	public ClientSocketPlayer() {
+		super();
 	}
 
 	public ClientSocketPlayer(int port, String host) {
 		super();
 		this.port = port;
+		this.host = host;
 	}
 
 	public void run() {
@@ -69,9 +71,7 @@ public class ClientSocketPlayer implements Runnable {
 
 	}
 
-	/**
-	 * Write message to server and increase counter
-	 */
+	// Write message to server and increase counter
 	private void writeMessageToServer() {
 		messageSent = "Hi Server!";
 		output.println(messageSent);
@@ -82,9 +82,7 @@ public class ClientSocketPlayer implements Runnable {
 				new Object[] { messageSent, sentMessageCounter });
 	}
 
-	/**
-	 * read message from server and increase counter
-	 */
+	// read message from server and increase counter
 	private void readMessageFromServer() throws IOException {
 		messageReceived = input.readLine();
 		receivedMessageCounter++;
@@ -93,23 +91,24 @@ public class ClientSocketPlayer implements Runnable {
 				new Object[] { messageReceived, receivedMessageCounter });
 	}
 
-	/**
-	 * Try to connect server socket
-	 * I will try MAX_TRIAL_NUMBER times to connect
-	 */
+	// Try to connect server socket. It will try MAX_TRIAL_NUMBER times to connect
 	private void connectToServer() {
 		int userTrialNumber = 0;
 		while (userTrialNumber <= SocketConstant.MAX_TRIAL_NUMBER) {
+			userTrialNumber++;
 			try {
-				clientSocket = new Socket("localhost", port);
+				clientSocket = new Socket(host, port);
 			} catch (UnknownHostException e) {
-				LOGGER.log(Level.SEVERE, "hostname error, client could not connect,exception" + e);
+				LOGGER.log(Level.SEVERE,
+						"hostname error, client could not connect. Number of trials {0}. Exception {1}",
+						new Object[] { userTrialNumber, e });
 			} catch (IOException e) {
-				LOGGER.log(Level.SEVERE, "client could not connect to server socket, exception" + e);
+				LOGGER.log(Level.SEVERE,
+						"client could not connect to server socket. Number of trials {0}. Exception {1}",
+						new Object[] { userTrialNumber, e });
 			}
 			if (clientSocket != null)
 				break;
-			userTrialNumber++;
 		}
 
 	}
