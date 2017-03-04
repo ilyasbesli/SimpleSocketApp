@@ -1,5 +1,7 @@
 */target/**
 
+socket-messenger.iml
+.idea/
 
 # Created by https://www.gitignore.io/api/jetbrains,intellij,vim,emacs,macos,windows,linux,java,maven
 
