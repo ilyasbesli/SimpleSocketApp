@@ -1,5 +1,9 @@
 package com.t360.constant;
 
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.logging.Level;
+
 /**
  * Constants for program.
  *
@@ -53,4 +57,19 @@ public interface SocketConstant {
      * Default number fo client.
      */
     int DEFAULT_NUMBER_OF_CLIENT = 2;
+
+
+    /**
+     * Safely close
+     *
+     * @param obj    object which will be close {@link Closeable}
+     * @param logger Logger for log {@link java.util.logging.Logger}
+     */
+    static void safelyClose(final Closeable obj, final java.util.logging.Logger logger) {
+        if (obj != null) try {
+            obj.close();
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "exception occured while socket-stream closed, detail", e);
+        }
+    }
 }
