@@ -19,17 +19,19 @@ public class ClientSocketPlayer implements Runnable {
 	private BufferedReader		input				= null;;
 	private PrintStream			output				= null;
 
-	private String				messageReceived;
-	private String				messageSent;
+	private String				messageReceived, messageSent;
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
 	private int					port;
+	private String				host;
 
-	private ClientSocketPlayer() {
+	public ClientSocketPlayer() {
+		super();
 	}
 
 	public ClientSocketPlayer(int port, String host) {
 		super();
 		this.port = port;
+		this.host = host;
 	}
 
 	public void run() {
@@ -102,7 +104,7 @@ public class ClientSocketPlayer implements Runnable {
 		while (userTrialNumber <= SocketConstant.MAX_TRIAL_NUMBER) {
 			userTrialNumber++;
 			try {
-				clientSocket = new Socket("localhost", port);
+				clientSocket = new Socket(host, port);
 			} catch (UnknownHostException e) {
 				LOGGER.log(Level.SEVERE,
 						"hostname error, client could not connect. Number of trials {0}. Exception {1}",
