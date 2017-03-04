@@ -27,7 +27,7 @@ public final class ClientSocketPlayer implements Runnable {
 		super();
 	}
 
-	public ClientSocketPlayer(int port, String host) {
+	public ClientSocketPlayer(final int port,final String host) {
 		super();
 		this.port = port;
 		this.host = host;

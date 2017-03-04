@@ -27,7 +27,7 @@ public final class ServerSocketPlayer implements Runnable {
 		super();
 	}
 
-	public ServerSocketPlayer(int port, String host) {
+	public ServerSocketPlayer(final int port,final String host) {
 		super();
 		this.port = port;
 		this.host = host;

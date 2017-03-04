@@ -27,7 +27,7 @@ public final class SocketStarter {
 	 * Initialize with user arguments
 	 * 
 	 */
-	public SocketStarter(String[] args) {
+	public SocketStarter(final String[] args) {
 		this();
 		userParam = args;
 		if (userParam == null) {
