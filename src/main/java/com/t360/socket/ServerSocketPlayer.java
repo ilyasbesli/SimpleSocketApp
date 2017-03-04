@@ -10,16 +10,15 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServerSocketPlayer implements Runnable {
+public final class ServerSocketPlayer implements Runnable {
 
 	private static final Logger	LOGGER				= Logger.getLogger(ServerSocketPlayer.class.getName());
 
 	private ServerSocket		serverSocket		= null;
 	private Socket				socket				= null;
-	private BufferedReader		input				= null;;
+	private BufferedReader		input				= null;
 	private PrintStream			output				= null;
 
-	private String				messageReceived, messageSent;
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
 	private int					port;
 	private String				host;
@@ -35,6 +34,8 @@ public class ServerSocketPlayer implements Runnable {
 	}
 
 	public void run() {
+
+        assert (port > 0);
 
 		LOGGER.log(Level.INFO, "server socket is starting");
 
@@ -76,18 +77,24 @@ public class ServerSocketPlayer implements Runnable {
 		}
 	}
 
-	// Read message from client and increase counter
+    /**
+     * Read message from client and increase counter
+     *
+     * @throws IOException {@link ServerSocketPlayer#input} may throw an {@link IOException} exception.
+     */
 	private void readMessageFromClient() throws IOException {
-		messageReceived = input.readLine();
+		String messageReceived = input.readLine();
 		receivedMessageCounter++;
 
 		LOGGER.log(Level.INFO, "Server received message: {0} - received message counter is: {1}",
 				new Object[] { messageReceived, receivedMessageCounter });
 	}
 
-	// Write message to client and increase counter
+    /**
+     * Write message to client and increase counter
+     */
 	private void writeMessageToClient() {
-		messageSent = "Hi Client!";
+		String messageSent = "Hi Client!";
 		output.println(messageSent);
 		output.flush();
 		sentMessageCounter++;
@@ -96,7 +103,9 @@ public class ServerSocketPlayer implements Runnable {
 				new Object[] { messageSent, sentMessageCounter });
 	}
 
-	// initialize server socket
+    /**
+     * initialize server socket
+     */
 	private void initializeServerSocket() {
 		try {
 			InetAddress addr = InetAddress.getByName(host);

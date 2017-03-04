@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 import com.t360.constant.SocketConstant;
 
-public class ClientSocketPlayer implements Runnable {
+public final class ClientSocketPlayer implements Runnable {
 
 	private static final Logger	LOGGER				= Logger.getLogger(ClientSocketPlayer.class.getName());
 
@@ -19,7 +19,6 @@ public class ClientSocketPlayer implements Runnable {
 	private BufferedReader		input				= null;;
 	private PrintStream			output				= null;
 
-	private String				messageReceived, messageSent;
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
 	private int					port;
 	private String				host;
@@ -35,6 +34,7 @@ public class ClientSocketPlayer implements Runnable {
 	}
 
 	public void run() {
+	    assert (port > 0);
 
 		LOGGER.log(Level.INFO, "client socket is starting");
 		try {
@@ -71,9 +71,11 @@ public class ClientSocketPlayer implements Runnable {
 
 	}
 
-	// Write message to server and increase counter
+    /**
+     * Write message to server and increase counter
+     */
 	private void writeMessageToServer() {
-		messageSent = "Hi Server!";
+		String messageSent = "Hi Server!";
 		output.println(messageSent);
 		output.flush();
 		sentMessageCounter++;
@@ -82,16 +84,22 @@ public class ClientSocketPlayer implements Runnable {
 				new Object[] { messageSent, sentMessageCounter });
 	}
 
-	// read message from server and increase counter
+    /**
+     * Read message from server and increase counter.
+     *
+     * @throws IOException {@link ClientSocketPlayer#input} may throw an {@link IOException} exception.
+     */
 	private void readMessageFromServer() throws IOException {
-		messageReceived = input.readLine();
+		String messageReceived = input.readLine();
 		receivedMessageCounter++;
 
 		LOGGER.log(Level.INFO, "Client received message: {0} - received message counter is: {1}",
 				new Object[] { messageReceived, receivedMessageCounter });
 	}
 
-	// Try to connect server socket. It will try MAX_TRIAL_NUMBER times to connect
+    /**
+     * Try to connect server socket. It will try {@link SocketConstant#MAX_TRIAL_NUMBER} times to connect
+     */
 	private void connectToServer() {
 		int userTrialNumber = 0;
 		while (userTrialNumber <= SocketConstant.MAX_TRIAL_NUMBER) {
