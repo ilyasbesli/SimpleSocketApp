@@ -100,7 +100,7 @@ public final class ServerSocketPlayer implements Runnable {
             InetAddress addr = InetAddress.getByName(host);
             serverSocket = new ServerSocket(port, 50, addr);
         } catch (IOException e) {
-            System.out.println("Server socket could not initialized, exception detail:" + e);
+            LOGGER.log(Level.SEVERE, "Server socket could not initialized, exception detail:" + e);
         }
     }
 

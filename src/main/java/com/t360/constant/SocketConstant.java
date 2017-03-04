@@ -10,6 +10,7 @@ import java.util.logging.Level;
  * @see com.t360.socket.ClientSocketPlayer
  * @see com.t360.socket.ServerSocketPlayer
  */
+// FIXME may be must be static class, Because we created a safelyClose which is static.
 public interface SocketConstant {
 
     /**
