@@ -49,11 +49,12 @@
         </plugins>
     </build>
 
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.11</version>
+            <version>6.10</version>
         </dependency>
 
     </dependencies>
