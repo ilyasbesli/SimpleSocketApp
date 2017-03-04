@@ -2,6 +2,7 @@
 
 socket-messenger.iml
 .idea/
+test-output/
 
 # Created by https://www.gitignore.io/api/jetbrains,intellij,vim,emacs,macos,windows,linux,java,maven
 
