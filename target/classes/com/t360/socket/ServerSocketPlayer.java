@@ -76,9 +76,7 @@ public class ServerSocketPlayer implements Runnable {
 		}
 	}
 
-	/**
-	 * Read message from client and increase counter
-	 */
+	// Read message from client and increase counter
 	private void readMessageFromClient() throws IOException {
 		messageReceived = input.readLine();
 		receivedMessageCounter++;
@@ -87,9 +85,7 @@ public class ServerSocketPlayer implements Runnable {
 				new Object[] { messageReceived, receivedMessageCounter });
 	}
 
-	/**
-	 * Write message to client and increase counter
-	 */
+	// Write message to client and increase counter
 	private void writeMessageToClient() {
 		messageSent = "Hi Client!";
 		output.println(messageSent);
@@ -100,9 +96,7 @@ public class ServerSocketPlayer implements Runnable {
 				new Object[] { messageSent, sentMessageCounter });
 	}
 
-	/**
-	 * initialize server socket
-	 */
+	// initialize server socket
 	private void initializeServerSocket() {
 		try {
 			InetAddress addr = InetAddress.getByName(host);

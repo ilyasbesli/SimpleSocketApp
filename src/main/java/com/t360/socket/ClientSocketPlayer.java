@@ -71,9 +71,7 @@ public class ClientSocketPlayer implements Runnable {
 
 	}
 
-	/**
-	 * Write message to server and increase counter
-	 */
+	// Write message to server and increase counter
 	private void writeMessageToServer() {
 		messageSent = "Hi Server!";
 		output.println(messageSent);
@@ -84,9 +82,7 @@ public class ClientSocketPlayer implements Runnable {
 				new Object[] { messageSent, sentMessageCounter });
 	}
 
-	/**
-	 * read message from server and increase counter
-	 */
+	// read message from server and increase counter
 	private void readMessageFromServer() throws IOException {
 		messageReceived = input.readLine();
 		receivedMessageCounter++;
@@ -95,10 +91,7 @@ public class ClientSocketPlayer implements Runnable {
 				new Object[] { messageReceived, receivedMessageCounter });
 	}
 
-	/**
-	 * Try to connect server socket
-	 * I will try MAX_TRIAL_NUMBER times to connect
-	 */
+	// Try to connect server socket. It will try MAX_TRIAL_NUMBER times to connect
 	private void connectToServer() {
 		int userTrialNumber = 0;
 		while (userTrialNumber <= SocketConstant.MAX_TRIAL_NUMBER) {
