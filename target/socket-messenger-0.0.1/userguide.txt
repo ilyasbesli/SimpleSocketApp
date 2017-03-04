@@ -1,0 +1,45 @@
+Messenger
+I decided application will have one server and one client. They will send messages among themselves.
+Class Description
+1-	MessengerMain
+•	In summary, starts conversation between server and client
+•	Read configuration and arguments input from user
+•	Control these inputs valid
+•	Determine number of client will initialized
+•	Determine client type, it can be server or client
+•	Pass port number to client and server if it givens
+•	Initialize and start server and client socket thread
+2-	 ServerSocketPlayer
+•	Initialize server socket
+•	Wait client connection
+•	Send messages to client
+•	Read messages from client
+3-	ClientSocketPlayer
+•	Initialize client socket
+•	Try to connect server socket
+•	Send messages to client
+•	Read messages from client
+4-	SocketConstant 
+•	Hold constant variables
+5-	MessengerSocketTest
+•	Test the server and client socket application
+Script 
+Default system values is:
+•	2 clients one of them client socket other server socket
+•	Port = 9999
+•	Host = localhost
+•	You can give any free port number dynamic in every script with -DsocketPortNumber
+Same Java Process
+it will start messenger with default values
+➢	java -jar executablejarPath.jar
+
+you can give port number parameter
+➢	java –DsocketPortNumber=7777 -jar executablejarPath.jar
+Different Java process
+You can start every client different java process
+➢	java -jar executablejarPath.jar 1 client
+➢	java -jar executablejarPath.jar 1 server 
+
+	you can give port number parameter
+➢	java –DsocketPortNumber=6666 -jar executablejarPath.jar 1 client
+➢	java –DsocketPortNumber=6666 -jar executablejarPath.jar 1 server

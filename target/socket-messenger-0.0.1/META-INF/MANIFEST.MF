@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: ibesli
+Class-Path: lib/org/testng/testng/6.10/testng-6.10.jar lib/com/beust/j
+ commander/1.48/jcommander-1.48.jar
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_111
+Main-Class: com.t360.MessengerMain
+
