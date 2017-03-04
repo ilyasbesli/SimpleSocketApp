@@ -100,16 +100,20 @@ public class ClientSocketPlayer implements Runnable {
 	private void connectToServer() {
 		int userTrialNumber = 0;
 		while (userTrialNumber <= SocketConstant.MAX_TRIAL_NUMBER) {
+			userTrialNumber++;
 			try {
 				clientSocket = new Socket("localhost", port);
 			} catch (UnknownHostException e) {
-				LOGGER.log(Level.SEVERE, "hostname error, client could not connect,exception" + e);
+				LOGGER.log(Level.SEVERE,
+						"hostname error, client could not connect. Number of trials {0}. Exception {1}",
+						new Object[] { userTrialNumber, e });
 			} catch (IOException e) {
-				LOGGER.log(Level.SEVERE, "client could not connect to server socket, exception" + e);
+				LOGGER.log(Level.SEVERE,
+						"client could not connect to server socket. Number of trials {0}. Exception {1}",
+						new Object[] { userTrialNumber, e });
 			}
 			if (clientSocket != null)
 				break;
-			userTrialNumber++;
 		}
 
 	}

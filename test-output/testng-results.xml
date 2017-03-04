@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2105" started-at="2017-03-01T18:25:13Z" finished-at="2017-03-01T18:25:16Z">
+  <suite name="Default suite" duration-ms="2097" started-at="2017-03-04T21:46:03Z" finished-at="2017-03-04T21:46:05Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2105" started-at="2017-03-01T18:25:13Z" finished-at="2017-03-01T18:25:16Z">
+    <test name="Default test" duration-ms="2097" started-at="2017-03-04T21:46:03Z" finished-at="2017-03-04T21:46:05Z">
       <class name="com.t360.test.MessengerSocketTest">
-        <test-method status="PASS" signature="runMessengerSameJavaProcessDefault()[pri:0, instance:com.t360.test.MessengerSocketTest@39fb3ab6]" name="runMessengerSameJavaProcessDefault" duration-ms="35" started-at="2017-03-01T20:25:13Z" finished-at="2017-03-01T20:25:14Z">
+        <test-method status="PASS" signature="runMessengerSameJavaProcessDefault()[pri:0, instance:com.t360.test.MessengerSocketTest@159f197]" name="runMessengerSameJavaProcessDefault" duration-ms="27" started-at="2017-03-04T23:46:03Z" finished-at="2017-03-04T23:46:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runMessengerSameJavaProcessDefault -->
-        <test-method status="PASS" signature="runMessengerSameJavaProcessTwoClient()[pri:0, instance:com.t360.test.MessengerSocketTest@39fb3ab6]" name="runMessengerSameJavaProcessTwoClient" duration-ms="3" started-at="2017-03-01T20:25:14Z" finished-at="2017-03-01T20:25:14Z">
+        <test-method status="PASS" signature="runMessengerSameJavaProcessTwoClient()[pri:0, instance:com.t360.test.MessengerSocketTest@159f197]" name="runMessengerSameJavaProcessTwoClient" duration-ms="15" started-at="2017-03-04T23:46:03Z" finished-at="2017-03-04T23:46:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runMessengerSameJavaProcessTwoClient -->
-        <test-method status="PASS" signature="runMessengerSeperateJavaProcessAllParam()[pri:0, instance:com.t360.test.MessengerSocketTest@39fb3ab6]" name="runMessengerSeperateJavaProcessAllParam" duration-ms="1008" started-at="2017-03-01T20:25:14Z" finished-at="2017-03-01T20:25:15Z">
+        <test-method status="PASS" signature="runMessengerSeperateJavaProcessAllParam()[pri:0, instance:com.t360.test.MessengerSocketTest@159f197]" name="runMessengerSeperateJavaProcessAllParam" duration-ms="1007" started-at="2017-03-04T23:46:03Z" finished-at="2017-03-04T23:46:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runMessengerSeperateJavaProcessAllParam -->
-        <test-method status="PASS" signature="runMessengerSeperateJavaProcessAllParamTwoClient()[pri:0, instance:com.t360.test.MessengerSocketTest@39fb3ab6]" name="runMessengerSeperateJavaProcessAllParamTwoClient" duration-ms="1008" started-at="2017-03-01T20:25:15Z" finished-at="2017-03-01T20:25:16Z">
+        <test-method status="PASS" signature="runMessengerSeperateJavaProcessAllParamTwoClient()[pri:0, instance:com.t360.test.MessengerSocketTest@159f197]" name="runMessengerSeperateJavaProcessAllParamTwoClient" duration-ms="1004" started-at="2017-03-04T23:46:04Z" finished-at="2017-03-04T23:46:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runMessengerSeperateJavaProcessAllParamTwoClient -->
