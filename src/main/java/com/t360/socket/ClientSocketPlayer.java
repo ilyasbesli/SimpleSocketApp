@@ -16,7 +16,7 @@ public final class ClientSocketPlayer implements Runnable {
 	private static final Logger	LOGGER				= Logger.getLogger(ClientSocketPlayer.class.getName());
 
 	private Socket				clientSocket		= null;
-	private BufferedReader		input				= null;;
+	private BufferedReader		input				= null;
 	private PrintStream			output				= null;
 
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
