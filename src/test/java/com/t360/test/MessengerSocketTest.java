@@ -14,14 +14,14 @@ public class MessengerSocketTest {
 
 	@Test
 	public void runMessengerSameJavaProcessTwoClient() {
-		System.setProperty(SocketConstant.SOCKET_PORT_NUMBER, "8888");
+		System.setProperty(SocketConstant.SOCKET_PORT, "8888");
 		String[] args = { "2" };
 		MessengerMain.main(args);
 	}
 
 	@Test
 	public void runMessengerSeperateJavaProcessAllParam() throws InterruptedException {
-		System.setProperty(SocketConstant.SOCKET_PORT_NUMBER, "7777");
+		System.setProperty(SocketConstant.SOCKET_PORT, "7777");
 		String[] args = { "1", "server" };
 		MessengerMain.main(args);
 		Thread.sleep(1000);
@@ -31,7 +31,7 @@ public class MessengerSocketTest {
 
 	@Test
 	public void runMessengerSeperateJavaProcessAllParamTwoClient() throws InterruptedException {
-		System.setProperty(SocketConstant.SOCKET_PORT_NUMBER, "6666");
+		System.setProperty(SocketConstant.SOCKET_PORT, "6666");
 		String[] args = { "2", "server" };
 		MessengerMain.main(args);
 		Thread.sleep(1000);

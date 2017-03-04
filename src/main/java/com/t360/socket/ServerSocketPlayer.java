@@ -23,14 +23,15 @@ public class ServerSocketPlayer implements Runnable {
 	private int					sentMessageCounter	= 0, receivedMessageCounter = 0;
 	private int					port;
 
-	public ServerSocketPlayer(int port) {
+	private ServerSocketPlayer() {
+	}
+
+	public ServerSocketPlayer(int port, String host) {
 		super();
 		this.port = port;
 	}
 
 	public void run() {
-		// it will print only some information to log
-		System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tH:%1$tM:%1$tS:%1$tL %4$-6s %5$s%6$s%n");
 
 		LOGGER.log(Level.INFO, "server socket is starting");
 
